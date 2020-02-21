@@ -24,7 +24,7 @@ void printSol(long long * dist, ll n)
 {
     for(ll i = 0; i < n; i++)
     {
-        cout << "Node: " << i << " distance: " << dist[i] << endl;
+        cout << i << dist[i] << endl;
     }
     return;
 }
