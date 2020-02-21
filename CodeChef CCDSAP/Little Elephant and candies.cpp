@@ -12,21 +12,24 @@ int main()
     cin >> t;
     while(t--)
     {
-        ll n;
-        cin >> n;
-        string str;
-        cin >> str;
-        ll count = 0;
+        ll n, c;
+        cin >> n >> c;
         for(ll i = 0; i < n; i++)
         {
-            if(str[i] == '1')
-            {
-                count++;
-            }
+            ll k;
+            cin >> k;
+            n = n - k;
         }
-        // cout << "count: " << count << endl;
-        cout << ((count * (count + 1)) / 2) << endl;
+        if(n >= 0)
+        {
+            cout << "Yes" << endl;
+        }
+        else
+        {
+            cout << "No" << endl;
+        }
     }
+    
 
     return 0;
 }
