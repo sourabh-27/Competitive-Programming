@@ -5,47 +5,6 @@ using namespace std;
 #define endl "\n" 
 typedef long long int ll;
 
-// class Node{
-//     public:
-//     int data;
-//     Node* next;
-// };
-
-// void sortedInsert(Node ** head, Node * new_node)
-// {
-//     Node* current;
-//     if(*head == NULL || (*head)->data >= (new_node)->data){
-//         new_node->next = *head;
-//         *head = new_node;
-//     }
-//     else{
-//         current = *head;
-//         while(current->next != NULL && current->next->data < new_node->data)
-//         {
-//             current = current->next;
-//         }
-//         new_node->next = current->next;
-//         current->next = new_node;
-//     }
-// }
-
-// Node *newnode(int nodeData){
-//     Node * new_node = new Node();
-//     new_node->data = nodeData;
-//     new_node->next = NULL;
-
-//     return new_node;
-// }
-
-// void printList(Node * head)
-// {
-//     Node *temp = head;
-//     while(temp->next != NULL){
-//         cout << temp->data << " ";
-//         temp = temp->next;
-//     }
-// }
-
 class Node{
     public:
     int data;
@@ -84,7 +43,7 @@ void printList(Node * head){
         cout << temp->data << " ";
         temp = temp->next;
     }
-    
+
 }
  
 int main()
