@@ -1,83 +1,66 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
+int charilepilots(int a[],int c[],int x,int n,int **dp)
+{
+    if(n<=0)
+    {
+        return 1;
+    }
+    int ans;
+    if(dp[n][x]>-1)
+    {
+        return dp[n][x];
+    }
+    if(x==0)
+    {
+        ans=a[0]+charilepilots(a+1,c+1,1,n-1,dp);
+    }
+    if(x==n)
+    {
+        ans=c[0]+charilepilots(a+1,c+1,x-1,n-1,dp);
+    }
+
+    else
+    {
+        ans=min(a[0]+charilepilots(a+1,c+1,x+1,n-1,dp),c[0]+charilepilots(a+1,c+1,x-1,n-1,dp));
+    }
+    dp[n][x]=ans;
+    return dp[n][x];
+}
 
 int main()
 {
-	int test_cases ;
-	cin >> test_cases;
-
-	for(int i=0;i<test_cases;i++)
-	{
-		string str;
-		cin >> str;
-		int length = str.size();
-		map<char,vector<int>> m;
-		for(int j=0;j<length;j++)
-		{
-			m[str[j]].push_back(j);
-		}
-
-        int totalSize = sizeof(m); int cou = 0;
-        for ( std::map<char, vector<int>>::iterator i = m.begin() ; i != m.end() ; i++ )
-                cou++;
-        totalSize += cou * sizeof(char);
-        totalSize += cou * sizeof(vector<int>);
-        cout << "totalSize: " << totalSize << endl;
-
-	 	map<char,vector<int>> :: iterator it;
-	 	int odd = 0;
-	 	for(it=m.begin();it!=m.end();it++)
-	 	{
-	 		if((it->second).size()%2 != 0)
-	 		{
-	 			odd++;
-	 		}
-	 	}
-
-
-	 	if(odd > 1)
-	 	cout<<"-1";
-		else
-		{
-			int res[length];
-			int k = length-1;
-			int start = 0;
-			int end = length-1;
-			while(k>=0)
-			{
-				for(it=m.begin();it!=m.end();it++)
-				{
-					int frequency = it->second.size();
-					if( (frequency%2 != 0))
-					{
-						res[length/2] = it->second[(it->second).size()/2];
-						k--;
-					}
-					while(frequency > 1)
-					{
-						if((start <= end ) && (start<length) && (end >= 0))
-						{
-							res[start] =  (it->second)[0];
-							(it->second).erase((it->second).begin());
-							res[end] =  (it->second)[(it->second).size()-1];
-							(it->second).pop_back();
-							start++;
-							end--;
-							k -= 2;
-							frequency -= 2;
-						}
-					}
-				}
-			}
-			for(int j=0;j<length;j++)
-			  cout<<res[j]+1<<" ";
-
-			//delete str;
-		}
-		cout<<endl;
-
-
-	 }
-
-	return 0;
+    int n;
+    cin>>n;
+    int a[n],c[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>c[i]>>a[i];
+    }
+    int **dp=new int*[n+1];
+    for(int i=0;i<n+1;i++)
+    {
+        dp[i]=new int[n+1];
+        for(int j=0;j<n+1;j++)
+        {
+            dp[i][j]=-1;
+        }
+    }
+    cout<<charilepilots(a,c,0,n,dp)<<endl;
+    for(int i=0;i<n+1;i++)
+    {
+        for(int j=0;j<n+1;j++)
+        {
+            cout<<dp[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    for(int i=0;i<n+1;i++)
+    {
+        delete []dp[i];
+    }
+    delete []dp;
+    
+    return 0;
 }
