@@ -27,7 +27,7 @@ ll findAns2(long long *arr, ll index, ll n, ll target){
     if(index > n){
         return 0;
     }
-    cout << "target: " << target << endl;
+    // cout << "target: " << target << endl;
     if(target == 0){
         return 1;
     }

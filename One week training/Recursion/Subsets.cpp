@@ -18,6 +18,20 @@ void findAns(long long * arr, ll n, ll count, long long * temp, ll i){
     findAns(arr, n, count + 1, temp, i + 1);
     findAns(arr, n, count, temp, i + 1);
 }
+
+void findAns2(long long * arr, ll n, ll i, vector<int> ans){
+    if(i == n){
+        for(ll i = 0; i < ans.size(); i++){
+            cout << ans[i] << " ";
+        }
+        cout << endl;
+        ans.clear();
+        return;
+    }
+    findAns2(arr, n, i + 1, ans);
+    ans.push_back(arr[i]);
+    findAns2(arr, n, i + 1, ans);
+}
  
 int main()
 {
@@ -29,8 +43,8 @@ int main()
     {
         cin >> arr[i];
     }
-    long long temp[n + 1];
-    findAns(arr, n, 0, temp, 0);
+    vector<int> ans;
+    findAns2(arr, n, 0, ans);
 
     return 0;
 }
