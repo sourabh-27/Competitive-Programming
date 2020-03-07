@@ -5,6 +5,7 @@ using namespace std;
 #define endl "\n" 
 typedef long long int ll;
  
+//max rectangle area in histogram of different height but same width.
 int main()
 {
     fast;
@@ -14,7 +15,7 @@ int main()
     for(ll i = 0; i < n; i++){
         cin >> arr[i];
     }
-    
+
 
     return 0;
 }

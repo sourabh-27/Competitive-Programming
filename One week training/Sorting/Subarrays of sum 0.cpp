@@ -20,6 +20,10 @@ int main()
 
     for(ll i = 1; i < n; i++){
         prefix[i] = prefix[i] + prefix[i - 1];
+        if(prefix[i] == 0)){
+            cout << "It is possible" << endl;
+            break;
+        }
         if(umap.count(prefix[i]) == 0){
             umap[prefix[i]] = 1;
         }

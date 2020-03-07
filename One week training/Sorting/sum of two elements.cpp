@@ -11,11 +11,11 @@ int main()
     ll n;
     cin >> n;
     long long arr[n + 1];
-    unordered_map<int, int> umap;
+    unordered_map<int, bool> umap;
     for(ll i = 0; i < n; i++){
         cin >> arr[i];
         // umap[arr[i]] = true;
-        umap.insert(arr[i], 1);
+        umap.insert({arr[i], true});
     }
     ll target;
     cin >> target;

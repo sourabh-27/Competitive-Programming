@@ -8,12 +8,6 @@ typedef long long int ll;
 int main()
 {
     fast;
-    ll n;
-    cin >> n;
-    long long arr[n + 1];
-    for(ll i = 0; i < n; i++){
-        cin >> arr[i];
-    }
     
 
     return 0;

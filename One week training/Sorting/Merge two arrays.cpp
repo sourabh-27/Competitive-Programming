@@ -30,15 +30,18 @@ vector<ll> merge(long long * arr, long long * arr2, ll m, ll n){
  
 int main()
 {
+
     fast;
-    ll m, n;
-    cin >> m >> n;
+    ll m;
+    cin >> m;
     long long arr[m + 1], arr2[n + 1];
 
     for(ll i = 0; i < m; i++){
         cin >> arr[i];
     }
 
+    ll n;
+    cin >> n;
     for(ll j = 0; j < n; j++){
         cin >> arr2[j];
     }
