@@ -4,11 +4,6 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 #define endl "\n" 
 typedef long long int ll;
-
-struct point{
-    ll xC;
-    ll yC;
-};
  
 int main()
 {
@@ -18,32 +13,30 @@ int main()
     while(t--){
         ll n, q;
         cin >> n >> q;
-
-        struct point arr[n + 1];
+        long long arr[n + 1];
         for(ll i = 1; i <= n; i++){
-            ll k;
-            cin >> k;
-            arr[i].xC = i; 
-            arr[i].yC = k;
+            cin >> arr[i];
+            cout << arr[i] << " ";
         }
-        for(ll i = 1; i <= n; i++){
-            cout << arr[i].xC << " " << arr[i].yC << endl;
-        }
+        cout  << endl;
 
         while(q--){
             ll x1, x2, y;
             cin >> x1 >> x2 >> y;
-            vector<pair<ll, ll>> points;
-            for(ll i = 1; i < n; i++){
-                ll m = (arr[i + 1].yC - arr[i].yC) / (arr[i + 1].xC - arr[i].xC);
-                ll ans = ((y - arr[i].yC) / m) + arr[i].xC;
-                points.push_back({ans, y});
+            ll count = 0;
+            for(ll i = x1 + 1; i <= x2; i++){
+                // cout << "arr[i]: " << arr[i] << " arr[i - 1]: " << arr[i - 1] << endl;
+                if(y <= arr[i] && y >= arr[i - 1]){
+                    // cout << "arr[i]: " << arr[i] << " arr[i - 1]: " << arr[i - 1] << endl;
+                    count++;
+                }
+                else if(y >= arr[i] && y <= arr[i - 1]){
+                    // cout << "arr[i]: " << arr[i] << " arr[i - 1]: " << arr[i - 1] << endl;
+                    count++;
+                }
             }
-            for(ll i = 0; i < points.size(); i++){
-                cout << "x: " << points[i].first << " y: " << points[i].second << endl;
-            }
+            cout << count << endl;
         }
-        
     }
 
     return 0;

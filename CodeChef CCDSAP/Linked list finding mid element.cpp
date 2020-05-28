@@ -81,7 +81,7 @@ int main()
         ll k; cin >> k;
         append(&head, k);
     }
-    printList(head);
+    printList(head); cout << endl;
     Node *newhead = reverse(head);
     printList(newhead);
 

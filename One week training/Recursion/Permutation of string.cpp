@@ -1,50 +1,30 @@
 #include<bits/stdc++.h>
-using namespace std; 
-#define mod 1000000007
-#define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-#define endl "\n" 
-typedef long long int ll;
+using namespace std;
 
-// void findAns(string s, string ans, ll len, ll index, ll already){
-//     if(index == len){
-//         cout << ans << endl;
-//         return;
-//     }
-//     string previous = ans;
-//     for(ll i = 0; i < len; i++){
-//         if(i == already){
-//             continue;
-//         }
-//         findAns(s, ans + s[i], len, index + 1, i);
-//         ans = previous;
-//     }
-// }
-
-// void swap(char a, char b, string s){
-
-// }
-
-void backTrack(string &s, ll index){
-    if(index == s.length() - 1){
+void findAns(string str, int curr, int len, int flag, string &s)
+    // cout << "curr: " << curr << " s: " << s << endl;
+	if(str[curr] == ')'){
         cout << s << endl;
-        return;
-    }
-
-    for(ll j = index; j < s.length(); j++){
-        swap(s[index], s[j]); //right rotate
-        backTrack(s, index + 1);
-        swap(s[index], s[j]); //left rotate
+		return;
+	}
+    // cout << "YO" << endl;
+    if(flag == 1){
+		s = s + str[curr];
+		findAns(str, curr + 1, len, flag, s);
+	}
+	else if(str[curr] == '('){
+		flag = 1;
+		findAns(str, curr + 1, len, flag, s);
+	}
+    else{
+        findAns(str, curr + 1, len, flag, s);
     }
 }
- 
-int main()
-{
-    fast;
-    string s;
-    cin >> s;
-    ll len = s.length();
-    // findAns(s, "", len, 0, -1);
-    backTrack(s, 0);
 
-    return 0;
+int main(){
+	string str;
+	cin >> str;
+	string s = "";
+	findAns(str, 0, str.length() - 1, 0, s);
+	// cout << s << endl;
 }

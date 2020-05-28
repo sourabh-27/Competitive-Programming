@@ -24,7 +24,8 @@ void maxIndWindow(long long * arr, ll n, ll k){
         }
         deq.push_back(i);
     }
-    // while(!deq.empty()){
+    // while(!deq.empty()){                                                                       
+        
     //     cout << arr[deq.front()] << " ";
     //     deq.pop_front();
     // }
